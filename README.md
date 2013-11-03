@@ -18,7 +18,7 @@ post.my_hstore = {
   'comment_ids' => [34, 67, 82],
   'user' => {
     'id' => 15,
-    'username' => 'janedoe',
+    'username' => 'janedoe'
   }
 }
 
