@@ -44,7 +44,7 @@ describe NestedHstore::Serializer do
 
   context 'with an array' do
     before :each do
-      @deserialized = (0..10).to_a
+      @deserialized = ('0'..'10').to_a
       @serialized = {
        "0"=>"0",
        "1"=>"1",
