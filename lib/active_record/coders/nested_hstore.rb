@@ -13,7 +13,11 @@ module ActiveRecord
       end
 
       def from_hstore hstore
-        @nested_serializer.deserialize(super)
+        if ActiveRecord::VERSION::MAJOR >= 4
+          @nested_serializer.deserialize(hstore)
+        else
+          @nested_serializer.deserialize(super)
+        end
       end
     end
   end
