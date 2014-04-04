@@ -75,7 +75,7 @@ describe NestedHstore::Serializer do
       @deserialized = [
         {
           'a' => {
-          'b' => 'String 1'
+            'b' => 'String 1'
           },
           'c' => 'String 2'
         },
