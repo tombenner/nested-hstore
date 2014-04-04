@@ -70,6 +70,28 @@ describe NestedHstore::Serializer do
     end
   end
 
+  context 'with an array of arrays' do
+    before do
+      @deserialized = [
+        ['a', 'b', 'c'],
+        [1, 2]
+      ]
+      @serialized = {
+       "0"=>"[\"a\",\"b\",\"c\"]",
+       "1"=>"[1,2]",
+       "__TYPE__"=>"__ARRAY__"
+      }
+    end
+    
+    describe '#serialize' do
+      it('serializes') { it_serializes }
+    end
+
+    describe '#deserialize' do
+      it('deserializes') { it_deserializes }
+    end
+  end
+
   context 'with an array of nested hashes' do
     before do
       @deserialized = [
