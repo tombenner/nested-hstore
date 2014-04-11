@@ -6,7 +6,6 @@ module NestedHstore
       @types_map = {
         array: '__ARRAY__',
         float: '__FLOAT__',
-        hash: '__HASH__',
         integer: '__INTEGER__',
         string: '__STRING__'
       }
@@ -47,15 +46,15 @@ module NestedHstore
           hash.values.map { |v| decode_json_if_json(v) }
         when :float
           hash[@value_key].to_f
-        when :hash
-          hash.each do |k, v|
-            hash[k] = decode_json_if_json(v)
-          end
-          hash
         when :integer
           hash[@value_key].to_i
         when :string
           hash[@value_key]
+        else
+          hash.each do |k, v|
+            hash[k] = decode_json_if_json(v)
+          end
+          hash
       end
       deserialized
     end
@@ -73,7 +72,12 @@ module NestedHstore
           hstore[k] = v.to_s
         end
       end
-      hstore.merge(@type_key => @types_map[type])
+
+      if type != :hash
+        hstore.merge!(@type_key => @types_map[type])
+      end
+
+      hstore
     end
 
     def standardize_value(value)
