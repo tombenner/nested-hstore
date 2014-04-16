@@ -13,7 +13,6 @@ describe NestedHstore::Serializer do
     deserialized.should == @deserialized
   end
 
-
   context 'with a nested hash' do
     before :each do
       @deserialized = {
@@ -40,30 +39,30 @@ describe NestedHstore::Serializer do
     describe '#deserialize' do
       it('deserializes') { it_deserializes }
     end
+  end
 
-    context 'with a type attribute' do
-      before :each do
-        @deserialized = {
-          'a' => {
-            'b' => {
-              'c' => 'String 1',
-              'd' => 'String 2'
-            }
-          },
-          'e' => {
-            'f' => 'String 3'
+  context 'with a nested hash with a type attribute' do
+    before :each do
+      @deserialized = {
+        'a' => {
+          'b' => {
+            'c' => 'String 1',
+            'd' => 'String 2'
           }
+        },
+        'e' => {
+          'f' => 'String 3'
         }
-        @serialized = {
-         "a"=>"{\"b\":{\"c\":\"String 1\",\"d\":\"String 2\"}}",
-         "e"=>"{\"f\":\"String 3\"}",
-         "__TYPE__"=>"__HASH__"
-        }
-      end
+      }
+      @serialized = {
+       "a"=>"{\"b\":{\"c\":\"String 1\",\"d\":\"String 2\"}}",
+       "e"=>"{\"f\":\"String 3\"}",
+       "__TYPE__"=>"__HASH__"
+      }
+    end
 
-      describe '#deserialize' do
-        it('deserializes') { it_deserializes }
-      end
+    describe '#deserialize' do
+      it('deserializes') { it_deserializes }
     end
   end
 
