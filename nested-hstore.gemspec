@@ -15,4 +15,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'activerecord'
   s.add_dependency 'activerecord-postgres-hstore'
   s.add_dependency 'activesupport'
+
+  s.add_development_dependency 'appraisal'
+  s.add_development_dependency 'rspec'
 end

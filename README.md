@@ -62,6 +62,15 @@ class Post < ActiveRecord::Base
 end
 ```
 
+Testing
+-------
+
+Nested Hstore is tested against ActiveRecord 3 and 4. If you'd like to submit a PR, please be sure to use [Appraisal](https://github.com/thoughtbot/appraisal) to test your changes in both contexts:
+
+```bash
+appraisal rspec
+```
+
 License
 -------
 
