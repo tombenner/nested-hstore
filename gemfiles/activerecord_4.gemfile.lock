@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    nested-hstore (0.0.4)
+    nested-hstore (0.0.5)
       activerecord
       activerecord-postgres-hstore
       activesupport
