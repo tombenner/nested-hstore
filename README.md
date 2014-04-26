@@ -12,21 +12,26 @@ Postgres hstores offer a number of benefits, but they don't natively support mul
 It also lets you store data types other than hashes in an hstore. All of the following values will be returned verbatim:
 
 ```ruby
+class User < ActiveRecord::Base
+  serialize :my_property, ActiveRecord::Coders::NestedHstore
+end
+
 # Nested hash
-post.my_hstore = {
-  'title' => 'My Post',
+user.my_property = {
+  'name' => 'Jane Doe',
   'comment_ids' => [34, 67, 82],
-  'user' => {
+  'location' => {
     'id' => 15,
-    'username' => 'janedoe'
+    'city' => 'San Francisco',
+    'state' => 'CA'
   }
 }
 
 # Array
-post.my_hstore = [34, 67, 82]
+user.my_property = [34, 67, 82]
 
 # Array of nested hashes
-post.my_hstore = [
+user.my_property = [
   {
     'id' => 15,
     'username' => 'janedoe'
@@ -38,13 +43,13 @@ post.my_hstore = [
 ]
 
 # Integer
-post.my_hstore = 43
+user.my_property = 43
 
 # Float
-post.my_hstore = 43.1
+user.my_property = 43.1
 
 # String
-post.my_hstore = 'janedoe'
+user.my_property = 'janedoe'
 ```
 
 Installation
@@ -57,8 +62,8 @@ Include it in your Gemfile:
 Set up [activerecord-postgres-hstore](https://github.com/diogob/activerecord-postgres-hstore) if you haven't already. Instead of using ActiveRecord::Coders::Hstore, use:
 
 ```ruby
-class Post < ActiveRecord::Base
-  serialize :my_store, ActiveRecord::Coders::NestedHstore
+class User < ActiveRecord::Base
+  serialize :my_property, ActiveRecord::Coders::NestedHstore
 end
 ```
 
