@@ -16,3 +16,8 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+db_path = Pathname.new(File.expand_path('../db', __FILE__))
+require db_path.join('create_posts.rb')
+ActiveRecord::Base.establish_connection(YAML.load_file(db_path.join('connection.yml')))
+

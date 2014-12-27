@@ -4,5 +4,4 @@ end
 
 appraise "activerecord-4" do
   gem "activerecord", "4.1.0"
-  gem "pg"
 end

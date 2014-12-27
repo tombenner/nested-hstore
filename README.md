@@ -55,11 +55,13 @@ user.my_property = 'janedoe'
 Installation
 ------------
 
+*If you're using ActiveRecord 2.x or 3.x, set up [activerecord-postgres-hstore](https://github.com/diogob/activerecord-postgres-hstore) if you haven't already. This isn't necessary for ActiveRecord 4.x.*
+
 Include it in your Gemfile:
 
     gem 'nested-hstore'
 
-Set up [activerecord-postgres-hstore](https://github.com/diogob/activerecord-postgres-hstore) if you haven't already. Instead of using ActiveRecord::Coders::Hstore, use:
+Serialize each property using `ActiveRecord::Coders::NestedHstore`:
 
 ```ruby
 class User < ActiveRecord::Base

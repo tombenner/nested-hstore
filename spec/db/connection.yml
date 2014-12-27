@@ -1,0 +1,4 @@
+adapter: postgresql
+database: nested_hstore_test
+username: postgres
+password:
