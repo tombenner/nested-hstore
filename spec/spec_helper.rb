@@ -1,4 +1,3 @@
-require 'rspec/autorun'
 require 'nested-hstore'
 
 RSpec.configure do |config|
