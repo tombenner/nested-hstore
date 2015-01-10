@@ -3,7 +3,6 @@ PATH
   specs:
     nested-hstore (0.1.0)
       activerecord
-      activerecord-postgres-hstore
       activesupport
 
 GEM
@@ -56,6 +55,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord (= 3.2.17)
+  activerecord-postgres-hstore
   appraisal
   nested-hstore!
   pg

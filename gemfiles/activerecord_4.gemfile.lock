@@ -3,7 +3,6 @@ PATH
   specs:
     nested-hstore (0.1.0)
       activerecord
-      activerecord-postgres-hstore
       activesupport
 
 GEM
@@ -16,10 +15,6 @@ GEM
       activemodel (= 4.1.0)
       activesupport (= 4.1.0)
       arel (~> 5.0.0)
-    activerecord-postgres-hstore (0.7.7)
-      activerecord (>= 3.1)
-      pg-hstore (>= 1.1.5)
-      rake
     activesupport (4.1.0)
       i18n (~> 0.6, >= 0.6.9)
       json (~> 1.7, >= 1.7.7)
@@ -37,7 +32,6 @@ GEM
     json (1.8.1)
     minitest (5.5.0)
     pg (0.17.1)
-    pg-hstore (1.2.0)
     rake (10.4.2)
     rspec (3.1.0)
       rspec-core (~> 3.1.0)
