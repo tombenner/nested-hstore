@@ -145,6 +145,42 @@ describe NestedHstore::Serializer do
     end
   end
 
+  context 'with a boolean true' do
+    before do
+      @deserialized = true
+      @serialized = {
+       "__VALUE__"=>"true",
+       "__TYPE__"=>"__BOOLEAN__"
+      }
+    end
+    
+    describe '#serialize' do
+      it('serializes') { it_serializes }
+    end
+
+    describe '#deserialize' do
+      it('deserializes') { it_deserializes }
+    end
+  end
+
+  context 'with a boolean false' do
+    before do
+      @deserialized = false
+      @serialized = {
+       "__VALUE__"=>"false",
+       "__TYPE__"=>"__BOOLEAN__"
+      }
+    end
+    
+    describe '#serialize' do
+      it('serializes') { it_serializes }
+    end
+
+    describe '#deserialize' do
+      it('deserializes') { it_deserializes }
+    end
+  end
+
   context 'with a float' do
     before do
       @deserialized = 43.1

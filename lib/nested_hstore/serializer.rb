@@ -5,6 +5,7 @@ module NestedHstore
       @type_key = '__TYPE__'
       @types_map = {
         array: '__ARRAY__',
+        boolean: '__BOOLEAN__',
         float: '__FLOAT__',
         integer: '__INTEGER__',
         string: '__STRING__'
@@ -18,6 +19,12 @@ module NestedHstore
       if value.is_a?(Array)
         type = :array
         hash = array_to_hash(value)
+      elsif value.is_a?(FalseClass)
+        type = :boolean
+        hash = { @value_key => value }
+      elsif value.is_a?(TrueClass)
+        type = :boolean
+        hash = { @value_key => value }
       elsif value.is_a?(Float)
         type = :float
         hash = { @value_key => value }
@@ -44,6 +51,8 @@ module NestedHstore
       deserialized = case type
         when :array
           hash.values.map { |v| decode_json_if_json(v) }
+        when :boolean
+          hash[@value_key] == 'true'
         when :float
           hash[@value_key].to_f
         when :integer

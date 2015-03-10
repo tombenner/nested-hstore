@@ -42,6 +42,9 @@ user.my_property = [
   }
 ]
 
+# Boolean
+user.my_property = true
+
 # Integer
 user.my_property = 43
 
