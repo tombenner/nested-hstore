@@ -16,25 +16,23 @@ module NestedHstore
 
     def serialize(value)
       return nil if value.nil?
-      if value.is_a?(Array)
+      case value
+      when Array
         type = :array
         hash = array_to_hash(value)
-      elsif value.is_a?(FalseClass)
+      when FalseClass, TrueClass
         type = :boolean
         hash = { @value_key => value }
-      elsif value.is_a?(TrueClass)
-        type = :boolean
-        hash = { @value_key => value }
-      elsif value.is_a?(Float)
+      when Float
         type = :float
         hash = { @value_key => value }
-      elsif value.is_a?(Hash)
+      when Hash
         type = :hash
         hash = standardize_value(value)
-      elsif value.is_a?(Integer)
+      when Integer
         type = :integer
         hash = { @value_key => value }
-      elsif value.is_a?(String)
+      when String
         type = :string
         hash = { @value_key => value }
       else
